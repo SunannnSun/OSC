@@ -13,8 +13,8 @@
       <geometry>
         <sphere radius="0.075"/>
       </geometry>
-      <material name="green">
-        <color rgba="0 1 0 1"/>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
   </link>
@@ -24,8 +24,8 @@
       <geometry>
         <cylinder length="0.3" radius="0.005"/>
       </geometry>
-      <material name="green">
-        <color rgba="0 1 0 1"/>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
       </material>
     </visual>
   </link>
@@ -35,8 +35,8 @@
       <geometry>
         <cylinder length="0.5" radius="0.0075"/>
       </geometry>
-      <material name="red">
-        <color rgba="1 0 0 1"/>
+      <material name="grreen">
+        <color rgba="0 1 0 1"/>
       </material>
     </visual>
   </link>
@@ -46,8 +46,8 @@
       <geometry>
         <sphere radius="0.025"/>
       </geometry>
-      <material name="red">
-        <color rgba="1 0 0 1"/>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
       </material>
     </visual>
     <inertial>
@@ -66,8 +66,8 @@
       <geometry>
         <cylinder length="0.5" radius="0.0075"/>
       </geometry>
-      <material name="red">
-        <color rgba="1 0 0 1"/>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
       </material>
     </visual>
     <collision>
@@ -83,8 +83,8 @@
       <geometry>
         <sphere radius="0.025"/>
       </geometry>
-      <material name="red">
-        <color rgba="1 0 0 1"/>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
       </material>
     </visual>
     <inertial>

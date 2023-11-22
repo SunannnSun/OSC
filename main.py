@@ -50,7 +50,7 @@ Wcom[2,2] = 1
 gains = OscGains(
         Kp, Kd, Wcom,
         Kp, Kd, W,
-        np.eye(1), np.eye(1), np.eye(1),
+        np.eye(1), np.eye(1), 0*np.eye(1),
         0.00001
     )
 
@@ -91,8 +91,11 @@ builder.Connect(osc.get_output_port(),
 
 #simulate
 diagram = builder.Build()
-display(SVG(pydot.graph_from_dot_data(
-    diagram.GetGraphvizString(max_depth=2))[0].create_svg()))
+svg_object = pydot.graph_from_dot_data(
+    diagram.GetGraphvizString(max_depth=2))[0].create_svg()
+with open("block-diagram.svg", "w") as f:
+    f.write(svg_object.decode("utf-8"))
+
 
 sim_time = 10.0
 simulator = Simulator(diagram)

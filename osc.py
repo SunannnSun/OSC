@@ -210,14 +210,23 @@ class OperationalSpaceWalkingController(LeafSystem):
         B = self.plant.MakeActuationMatrix()
 
         # TODO: Add the dynamics constraint
+
+        A_dyn = np.hstack([M, -J_c.T, -B])
+        b_dyn = G - Cv
+        varlist =  np.hstack([vdot, lambda_c, u]).ravel()
+
+        # prog.AddLinearEqualityConstraint(A_dyn, b_dyn, varlist)
         prog.AddLinearEqualityConstraint(M @ vdot + Cv + G - B @ u - J_c.T @ lambda_c, np.zeros(7))
 
         # TODO: Add Contact Constraint
         prog.AddLinearEqualityConstraint(J_c @ vdot + J_c_dot_v, np.zeros(3)) 
         
         # TODO: Add Friction Cone Constraint assuming mu = 1
-        prog.AddLinearConstraint((lambda_c[0]) <= lambda_c[2])
-        prog.AddLinearConstraint(-(lambda_c[0]) <= lambda_c[2])
+        prog.AddLinearEqualityConstraint(lambda_c[1] == 0)
+        prog.AddLinearConstraint(lambda_c[-1] >= 0)
+        prog.AddLinearConstraint(lambda_c[0] <= 0.5 * lambda_c[-1])
+        prog.AddLinearConstraint(-lambda_c[0] <= 0.5 * lambda_c[-1])
+
 
         # Solve the QP
         solver = OsqpSolver()
